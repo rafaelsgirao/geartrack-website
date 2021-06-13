@@ -130,7 +130,7 @@ function processErrorResponse (err, res, info) {
   let message = ''
 
   let type = getErrorType(err.message)
-  let bugsnag = res.app.get('bugsnag')
+//  let bugsnag = res.app.get('bugsnag')
 
   switch (type) {
     case 'BUSY':
@@ -149,7 +149,7 @@ function processErrorResponse (err, res, info) {
       message = 'De momento estamos com dificuldade em aceder à informação deste servidor. Tenta mais tarde.'
       break
     case 'ACTION_REQUIRED':
-      if(bugsnag) bugsnag.notify(err) // send error to be analysed
+ //     if(bugsnag) bugsnag.notify(err) // send error to be analysed
       cacheSeconds = 0 // prevent cache
       message = 'Este tracker pode precisar de um passo adicional no seu website. Se efetuares esse passo volta e atualiza a pagina para tentarmos de novo! :)'
       break

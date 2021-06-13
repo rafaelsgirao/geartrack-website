@@ -3,7 +3,7 @@ const path = require('path')
 const favicon = require('serve-favicon')
 const logger = require('morgan')
 const hbs = require('hbs')
-const bugsnag = require("bugsnag")
+//const bugsnag = require("bugsnag")
 const index = require('./routes/index')
 const api = require('./routes/api')
 const hbsService = require('./services/hbsService')
@@ -22,7 +22,7 @@ const app = express()
 */
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
-app.set('bugsnag', bugsnag) // save the object for responses notify when a parse fails
+// app.set('bugsnag', bugsnag) // save the object for responses notify when a parse fails
 app.locals.app_name = 'Geartrack'
 hbsService(hbs) // Register hbs partials and helpers
 
@@ -31,7 +31,7 @@ hbsService(hbs) // Register hbs partials and helpers
 | App middlewares
 |--------------------------------------------------------------------------
 */
-app.use(bugsnag.requestHandler)
+//app.use(bugsnag.requestHandler)
 app.use(logger('dev'))
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, 'public')))
@@ -44,7 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', index)
 app.use('/api', api)
 
-app.use(bugsnag.errorHandler)
+//app.use(bugsnag.errorHandler)
 /*
 |--------------------------------------------------------------------------
 | 404
